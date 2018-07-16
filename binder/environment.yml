@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - opencv-python
   - numpy
   - scipy
   - matplotlib
