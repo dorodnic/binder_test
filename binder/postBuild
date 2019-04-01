@@ -16,3 +16,36 @@ wget -N http://realsense-hw-public.s3.amazonaws.com/rs-tests/TestData/MobileNetS
 pip install opencv-python
 git clone https://github.com/daavoo/pyntcloud.git
 pip install --index-url https://test.pypi.org/simple/ pyrealsense2
+
+echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main' || sudo tee /etc/apt/sources.list.d/realsense-public.list
+sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main"
+sudo apt-get update -qq
+sudo apt-get install librealsense2-dkms --allow-unauthenticated -y 
+sudo apt-get install librealsense2-dev --allow-unauthenticated -y
+
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update -qq
+sudo apt-get install ros-kinetic-ros-base -y
+sudo rosdep init
+rosdep update
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+sudo apt-get install ros-kinetic-cv-bridge -y
+sudo apt-get install ros-kinetic-image-transport
+sudo apt-get install ros-kinetic-tf -y
+sudo apt-get install ros-kinetic-diagnostic-updater -y
+source ~/.bashrc
+mkdir -p ~/catkin_ws/src/realsense
+
+mv * ~/catkin_ws/src/realsense/
+cd ~/catkin_ws/src/
+catkin_init_workspace 
+cd ..
+catkin_make clean
+catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
+catkin_make install
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+bag_filename="http://realsense-hw-public.s3.amazonaws.com/rs-tests/TestData/outdoors.bag";
+wget $bag_filename -P "records/"
