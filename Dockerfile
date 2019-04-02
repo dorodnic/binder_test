@@ -22,10 +22,8 @@ RUN pip install \
   matplotlib==2.2.2 \
   jupyterlab==0.33.4 \
   opencv-python \
-  matplotlib \
   scipy \
-  pandas \
-  numpy
+  pandas
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
