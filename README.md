@@ -1,4 +1,4 @@
-# Jupyter Notebooks for Intel® RealSense™ SDK
+# Jupyter Notebooks for Intel® RealSense™ SDK 
 
 This branch offers various [Jupyter notebooks](http://jupyter.org/) showcasing Intel® RealSense™ technology.
 
