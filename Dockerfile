@@ -4,10 +4,6 @@ FROM ros:kinetic-ros-base
 RUN apt-get update && apt-get install -y \
     ros-kinetic-ros-tutorials \
     ros-kinetic-common-tutorials \
-    ros-kinetic-cv-bridge \
-    ros-kinetic-image-transport \
-    ros-kinetic-tf \
-    ros-kinetic-diagnostic-updater \
     python-pip \
     xvfb=2:1.18.4-0ubuntu0.7 \
 	x11-apps=7.7+5+nmu1ubuntu1 \
