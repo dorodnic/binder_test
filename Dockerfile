@@ -1,7 +1,7 @@
 FROM ros:kinetic-ros-base
 
 # install ros tutorials packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && apt-get install -y \
     wget \
     ros-kinetic-ros-tutorials \
     ros-kinetic-common-tutorials \
