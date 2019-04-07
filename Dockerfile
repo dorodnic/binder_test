@@ -24,8 +24,6 @@ RUN pip install \
   opencv-python \
   scipy \
   pandas
-  
-RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ./office_1.bag
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
@@ -40,6 +38,8 @@ RUN adduser --disabled-password \
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+
+RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
 USER ${NB_USER}
 WORKDIR ${HOME}
