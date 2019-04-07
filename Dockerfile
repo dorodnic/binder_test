@@ -2,6 +2,7 @@ FROM ros:kinetic-ros-base
 
 # install ros tutorials packages
 RUN apt-get update && apt-get install -y \
+    wget \
     ros-kinetic-ros-tutorials \
     ros-kinetic-common-tutorials \
     ros-kinetic-rtabmap-ros \
