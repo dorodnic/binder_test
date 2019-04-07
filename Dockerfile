@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-imu-filter-madgwick \
     ros-kinetic-robot-localization \
     python-pip \
+    wget \
     xvfb=2:1.18.4-0ubuntu0.7 \
 	x11-apps=7.7+5+nmu1ubuntu1 \
 	netpbm=2:10.0-15.3\
@@ -24,7 +25,7 @@ RUN pip install \
   scipy \
   pandas
   
-RUN curl -O http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag
+RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
