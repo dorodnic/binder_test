@@ -1,8 +1,7 @@
 FROM ros:kinetic-ros-base
 
 # install ros tutorials packages
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && apt-get install -y \
-    wget \
+RUN apt-get update && apt-get install -y \
     ros-kinetic-ros-tutorials \
     ros-kinetic-common-tutorials \
     ros-kinetic-rtabmap-ros \
@@ -25,7 +24,7 @@ RUN pip install \
   scipy \
   pandas
   
-RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag
+RUN curl -O http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
