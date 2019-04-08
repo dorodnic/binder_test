@@ -25,6 +25,8 @@ RUN pip install \
   scipy \
   pyrosbag \
   pandas
+  
+RUN git clone https://github.com/daavoo/pyntcloud.git
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
