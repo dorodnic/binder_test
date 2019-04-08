@@ -42,7 +42,13 @@ RUN chown -R ${NB_UID} ${HOME}
 
 RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
+RUN mkdir $HOME/.jupyter && echo "c.NotebookApp.iopub_data_rate_limit=1e22" >> $HOME/.jupyter/jupyter_notebook_config.py
+
 USER ${NB_USER}
 WORKDIR ${HOME}
+
+RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
+RUN jupyter nbextension enable --py --sys-prefix appmode
+RUN jupyter serverextension enable --py --sys-prefix appmode
 
 CMD ["jupyter", "lab", "--no-browser", "--ip", "0.0.0.0"]
