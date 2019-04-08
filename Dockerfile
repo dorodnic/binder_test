@@ -23,6 +23,7 @@ RUN pip install \
   jupyterlab==0.33.4 \
   opencv-python \
   scipy \
+  pyrosbag \
   pandas
 
 ENV NB_USER jovyan
