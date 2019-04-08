@@ -8,11 +8,29 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-imu-filter-madgwick \
     ros-kinetic-robot-localization \
     python-pip \
+    libeigen3-dev \
+    libflann-dev \
+    libusb-1.0-0-dev \
+    libvtk6-qt-dev \
+    libpcap-dev \
+    libboost-all-dev \
+    libproj-dev \
     wget \
     xvfb=2:1.18.4-0ubuntu0.7 \
 	x11-apps=7.7+5+nmu1ubuntu1 \
 	netpbm=2:10.0-15.3\
     && rm -rf /var/lib/apt/lists/
+    
+RUN \
+    git config --global http.sslVerify false && \
+    git clone --branch pcl-1.8.1 --depth 1 https://github.com/PointCloudLibrary/pcl.git pcl-trunk && \
+    cd pcl-trunk && \
+    mkdir build && cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make -j 1 && make install && \
+    make clean
+
+RUN ldconfig
 
 RUN pip install --upgrade pip==18.0
 RUN pip install \
@@ -24,7 +42,8 @@ RUN pip install \
   opencv-python \
   scipy \
   pyrosbag \
-  pandas
+  pandas \
+  python-pcl
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
