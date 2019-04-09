@@ -1,7 +1,7 @@
 FROM ros:kinetic-ros-base
 
-# install ros tutorials packages
 RUN apt-get update && apt-get install -y \
+    libpcl1 \
     ros-kinetic-ros-tutorials \
     ros-kinetic-common-tutorials \
     ros-kinetic-rtabmap-ros \
@@ -21,12 +21,16 @@ RUN pip install \
   ipykernel==4.8.2 \
   matplotlib==2.2.2 \
   jupyterlab==0.33.4 \
+  cython==0.25.2 \
   opencv-python \
   scipy \
   pyrosbag \
-  pandas
+  pandas \
+  scikit-build
   
 RUN git clone https://github.com/daavoo/pyntcloud.git
+
+RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python setup.py install && cd ..
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
