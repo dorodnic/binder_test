@@ -8,14 +8,15 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-imu-filter-madgwick \
     ros-kinetic-robot-localization \
     python-pip \
+    python3 python3-pip python3-dev python3-scipy python3-numpy python3-lxml \
     wget \
     xvfb=2:1.18.4-0ubuntu0.7 \
 	x11-apps=7.7+5+nmu1ubuntu1 \
 	netpbm=2:10.0-15.3\
     && rm -rf /var/lib/apt/lists/
 
-RUN pip install --upgrade pip==18.0
-RUN pip install \
+RUN pip3 install --upgrade pip==18.0
+RUN pip3 install \
   notebook==5.6.0 \
   ipywidgets==7.3.0 \
   ipykernel==4.8.2 \
@@ -29,7 +30,7 @@ RUN pip install \
   appmode \
   scikit-build
 
-RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python setup.py install && cd ..
+RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python3 setup.py install && cd ..
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
@@ -45,7 +46,7 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN git clone https://github.com/daavoo/pyntcloud.git && cd pyntcloud && python setup.py install && cd ..
+RUN git clone https://github.com/daavoo/pyntcloud.git && cd pyntcloud && python3 setup.py install && cd ..
 
 RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
