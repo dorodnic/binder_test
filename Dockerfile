@@ -26,6 +26,7 @@ RUN pip install \
   scipy \
   pyrosbag \
   pandas \
+  appmode \
   scikit-build
   
 RUN git clone https://github.com/daavoo/pyntcloud.git
