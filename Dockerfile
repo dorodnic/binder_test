@@ -26,7 +26,7 @@ RUN pip3 install \
   opencv-python \
   scipy \
   pyrosbag \
-  pandas \
+  pandas==0.20 \
   appmode \
   scikit-build
 
