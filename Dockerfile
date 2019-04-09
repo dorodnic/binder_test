@@ -30,7 +30,7 @@ RUN pip3 install \
   appmode \
   scikit-build
 
- RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && git checkout 07080206caee99e05ec32390ccbca12911f44e98 && python3 setup.py install && cd ..
+ RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python3 setup.py install && cd ..
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
@@ -46,7 +46,7 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN git clone https://github.com/daavoo/pyntcloud.git && cd pyntcloud && python3 setup.py install && cd ..
+RUN git clone https://github.com/daavoo/pyntcloud.git && cd pyntcloud && git checkout 07080206caee99e05ec32390ccbca12911f44e98 && python3 setup.py install && cd ..
 
 RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
