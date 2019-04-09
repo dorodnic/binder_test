@@ -45,7 +45,7 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN git clone https://github.com/daavoo/pyntcloud.git ${HOME}/pyntcloud
+RUN git clone https://github.com/daavoo/pyntcloud.git && cd pyntcloud && python setup.py install && cd ..
 
 RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
