@@ -28,8 +28,6 @@ RUN pip install \
   pandas \
   appmode \
   scikit-build
-  
-RUN git clone https://github.com/daavoo/pyntcloud.git
 
 RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python setup.py install && cd ..
 
@@ -46,6 +44,8 @@ RUN adduser --disabled-password \
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+
+RUN git clone https://github.com/daavoo/pyntcloud.git ${HOME}/pyntcloud
 
 RUN wget http://realsense-hw-public.s3-eu-west-1.amazonaws.com/rs-tests/office_1.bag -O ${HOME}/office_1.bag
 
