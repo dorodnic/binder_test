@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-imu-filter-madgwick \
     ros-kinetic-robot-localization \
     python-pip \
+    python3-rospy \
     python3 python3-pip python3-dev python3-scipy python3-numpy python3-lxml python3-yaml \
     wget \
     xvfb=2:1.18.4-0ubuntu0.7 \
