@@ -25,6 +25,7 @@ RUN pip3 install \
   cython==0.25.2 \
   opencv-python \
   scipy \
+  rospkg catkin_pkg \
   pyrosbag \
   pandas==0.20 \
   appmode \
