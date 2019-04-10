@@ -17,11 +17,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install --upgrade pip==18.0
 RUN pip3 install \
-  notebook==5.6.0 \
-  ipywidgets==7.3.0 \
-  ipykernel==4.8.2 \
-  matplotlib==2.2.2 \
-  jupyterlab==0.33.4 \
+  notebook \
+  ipywidgets \
+  ipykernel \
+  matplotlib \
+  jupyterlab \
   cython==0.25.2 \
   opencv-python \
   scipy \
