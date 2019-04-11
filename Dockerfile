@@ -31,7 +31,7 @@ RUN pip install \
   appmode \
   scikit-build
 
-RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python3 setup.py install && cd ..
+RUN git clone https://github.com/strawlab/python-pcl.git && cd python-pcl && python setup.py install && cd ..
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
